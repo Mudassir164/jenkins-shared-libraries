@@ -7,7 +7,7 @@ def call(String gitRepoUrl, String gitBranch, String maxDepth) {
     """, returnStdout: true).trim()
 
     sh(script: """
-        jq '.' secrets_scan_output.json
+        jq '.' secrets_scan_result.json > secrets_scan_output.json
     """, returnStdout: true).trim()
     // Read the contents of the secrets_scan_results.json to check for secrets
     def verifiedSecret = sh(script: """
