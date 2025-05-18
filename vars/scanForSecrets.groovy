@@ -4,7 +4,6 @@ def call(String gitRepoUrl, String gitBranch, String maxDepth) {
     // Run TruffleHog and save the output to a file
     def result = sh(script: """
         ~/bin/trufflehog git ${gitRepoUrl} --branch ${gitBranch} ${maxDepth} --json > secrets_scan_results.json  2>&1
-//        jq '.' secrets_scan_results.json > output_secret_scan.json
     """, returnStdout: true).trim()
 
     // Read the contents of the secrets_scan_results.json to check for secrets
